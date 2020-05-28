@@ -18,7 +18,7 @@
             android:queryHint="Search Projects" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/typeRecyclerView"
             android:layout_gravity="center_horizontal"
             android:scrollbars="horizontal"
             android:layout_width="match_parent"
@@ -27,6 +27,7 @@
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:id="@+id/listRecyclerView"
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -10,6 +10,8 @@ import com.melvin9.projects.school.experiments.projectFinder.data.network.ApiHan
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.lang.Exception
+import java.net.UnknownHostException
 
 class MainActivityPresenter {
     var projectData = MutableLiveData<List<Project>>()
@@ -24,18 +26,24 @@ class MainActivityPresenter {
         ProjectDatabase(context).projectDao().getProjectData().observe(context as LifecycleOwner,
             Observer {
                 projectData.value = it
-                MainActivityImpl.data=projectData
+                MainActivity.data=projectData
             })
     }
 
     private fun getDataFromServer(callback: (data: List<Project>) -> Unit) {
         GlobalScope.launch(Dispatchers.IO) {
-            val response = ApiHandler().getProjectsAsync().await()
-            callback(response.project)
+            try {
+                val response = ApiHandler().getProjectsAsync().await()
+                callback(response.project)
+            }catch (e: UnknownHostException){
+                // Call Failed
+                e.printStackTrace()
+            }
         }
     }
 
     private fun storeDataToDB(context: Context, data: List<Project>) {
+        ProjectDatabase(context).projectDao().deleteAll()
         ProjectDatabase(context).projectDao().insert(data)
     }
 

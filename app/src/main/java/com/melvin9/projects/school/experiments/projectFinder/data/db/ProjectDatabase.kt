@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
 
+
 @Database(
     entities = [Project::class],
-    version = 1
+    version = 2
 )
 abstract class ProjectDatabase : RoomDatabase() {
     abstract fun projectDao(): DAO
@@ -24,12 +25,11 @@ abstract class ProjectDatabase : RoomDatabase() {
                 instance = it
             }
         }
-
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             ProjectDatabase::class.java,
             "projects.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
 
     }
 }

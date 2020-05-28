@@ -13,10 +13,16 @@ data class Project(
     val itemsRequired: String?,
     @SerializedName("projectTitle")
     val projectTitle: String?,
+    @SerializedName("projectDescription")
+    val projectDescription: String?,
     @SerializedName("projectType")
     val projectType: String?,
     @SerializedName("steps")
     val steps: String?,
+    @SerializedName("imageLink")
+    val imageLink: String?,
+    @SerializedName("videoLink")
+    val videoLink: String?,
     @PrimaryKey
     @SerializedName("_id")
     val id: String,

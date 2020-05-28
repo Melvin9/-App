@@ -14,4 +14,8 @@ interface DAO {
 
     @Query("Select * from project")
     fun getProjectData():LiveData<List<Project>>
+
+    @Query("Delete from project ")
+    fun deleteAll()
+
 }

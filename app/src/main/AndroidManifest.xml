@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.melvin9.projects.school.experiments.projectFinder.projectList.ProjectListActivity" />
+        <activity android:name="com.melvin9.projects.school.experiments.projectFinder.projectListActivity.ProjectListActivity" />
         <activity
-            android:name="com.melvin9.projects.school.experiments.projectFinder.mainActivity.MainActivityImpl"
+            android:name="com.melvin9.projects.school.experiments.projectFinder.mainActivity.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

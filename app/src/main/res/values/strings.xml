@@ -6,4 +6,7 @@
     <string name="headerImage">HeaderImage</string>
     <string name="good_morning">Good Morning</string>
     <string name="john">John</string>
+    <string name="project_image">Project Image</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 </resources>

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.melvin9.projects.school.experiments.projectFinder.R
-import com.melvin9.projects.school.experiments.projectFinder.mainActivity.MainActivityImpl
+import com.melvin9.projects.school.experiments.projectFinder.mainActivity.MainActivity
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment(){
@@ -25,7 +25,7 @@ class DashboardFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (text_dashboard == null) return
-        MainActivityImpl.data.observe(this as LifecycleOwner, Observer {
+        MainActivity.data.observe(this as LifecycleOwner, Observer {
             text_dashboard.text=it.toString()
         })
     }
