@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.melvin9.projects.school.experiments.projectFinder.ProjectContent">
+    <TextView
+        android:layout_width="match_parent"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/projectTitle"
+        android:text="TITLE"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:background="@color/colorTheme"
+        android:layout_height="wrap_content"/>
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                android:text="description"
+                />
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/itemsRequired"
+               android:text="Items"
+               />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/steps"
+                android:text="steps"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

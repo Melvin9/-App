@@ -32,7 +32,7 @@ class ProjectTypesAdapter(private val list: List<ProjectTypes>) :
     override fun onBindViewHolder(holder: ProjectViewHolder, position: Int) {
         holder.textView?.text =list[position].projectType
         if(list[position].projectType.equals(ProjectListActivity.type,true)){
-            holder.linearLayout?.setBackgroundColor(Color.parseColor("#8593ff"))
+            holder.linearLayout?.setBackgroundColor(Color.parseColor("#ffffff"))
         }
 
     }
