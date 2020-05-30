@@ -37,8 +37,8 @@ class ProjectListsAdapter(private val projectLists: List<Project>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.titleTextView.text = projectLists[position].projectTitle
-        holder.descriptionTextView.text = projectLists[position].projectDescription
+        holder.titleTextView.text = projectLists[position].projectTitle?.trim()
+        holder.descriptionTextView.text = projectLists[position].projectDescription?.trim()
         Glide.with(holder.context)
             .load(projectLists[position].imageLink)
             .centerCrop()
@@ -49,11 +49,11 @@ class ProjectListsAdapter(private val projectLists: List<Project>) :
 
         holder.itemView.setOnClickListener{
             val intent=Intent(holder.context,ProjectContent::class.java).apply {
-                putExtra("videoURL",projectLists[position].videoLink)
-                putExtra("description",projectLists[position].projectDescription)
-                putExtra("title",projectLists[position].projectTitle)
-                putExtra("steps",projectLists[position].steps)
-                putExtra("items",projectLists[position].itemsRequired)
+                putExtra("videoURL", projectLists[position].videoLink?.trim())
+                putExtra("description",projectLists[position].projectDescription?.trim())
+                putExtra("title",projectLists[position].projectTitle?.trim())
+                putExtra("steps",projectLists[position].steps?.trim())
+                putExtra("items",projectLists[position].itemsRequired?.trim())
 
             }
             startActivity(holder.context,intent, Bundle.EMPTY)

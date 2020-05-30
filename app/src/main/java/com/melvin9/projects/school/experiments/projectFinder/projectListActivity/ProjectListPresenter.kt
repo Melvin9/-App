@@ -1,16 +1,23 @@
 package com.melvin9.projects.school.experiments.projectFinder.projectListActivity
 
+import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
 import com.melvin9.projects.school.experiments.projectFinder.mainActivity.MainActivity
 import com.melvin9.projects.school.experiments.projectFinder.projectListActivity.data.ProjectTypes
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ProjectListPresenter {
-    fun onCreate(context: Context, projectListInterface: ProjectListInterface) {
+    var list:MutableList<Project> = ArrayList()
+
+        fun onCreate(context: Context, projectListInterface: ProjectListInterface,intent: Intent) {
         addProjectTypes(context, projectListInterface)
-        addProjectLists(context, projectListInterface)
-    }
+        addProjectLists(context, projectListInterface) }
 
     private fun addProjectTypes(context: Context, projectListInterface: ProjectListInterface) {
         val data = listOf(
@@ -23,10 +30,27 @@ class ProjectListPresenter {
     }
 
     private fun addProjectLists(context: Context, projectListInterface: ProjectListInterface) {
-        MainActivity.data.observe(context as LifecycleOwner, Observer {
-            val data = it
-            projectListInterface.renderProjectLists(context, data)
+        MainActivity.data.observe(context as LifecycleOwner, Observer {project->
+            for(item in project){
+                list.add(item)
+            }
+            projectListInterface.renderProjectLists(context, list)
         })
+    }
+    fun filterList(context: Context,searchQuery:String,projectListInterface: ProjectListInterface){
+        val newList:MutableList<Project> = ArrayList()
+        if(searchQuery.isNotEmpty()) {
+            for (item in list)
+                if (item.projectTitle.toString().toLowerCase(Locale.ROOT)
+                        .contains(searchQuery.toLowerCase(Locale.ROOT))) {
+                    newList.add(item)
+                }
+            projectListInterface.renderProjectLists(context, newList)
+        }
+        else{
+            projectListInterface.renderProjectLists(context, list)
+        }
 
     }
+
 }

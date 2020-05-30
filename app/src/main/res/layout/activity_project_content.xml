@@ -2,27 +2,85 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.melvin9.projects.school.experiments.projectFinder.ProjectContent">
-    <TextView
-        android:layout_width="match_parent"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:id="@+id/projectTitle"
-        android:text="TITLE"
-        android:textColor="@android:color/white"
-        android:textAlignment="center"
-        android:background="@color/colorTheme"
-        android:layout_height="wrap_content"/>
+
+
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_player_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
          />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f5f5f5"
+        android:layout_gravity="bottom"
+        android:elevation="5dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:textColor="#212121"
+            android:id="@+id/projectTitle"
+            android:textStyle="bold"
+            android:text="TITLE"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            android:layout_gravity="bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/imageFavourite"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:fontFamily="@font/montserrat_medium"
+            android:textColor="#313131"
+            android:text="Description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/projectTitle"
 
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageFavourite"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="20dp"
+                app:srcCompat="@drawable/heart_icon"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to favourites"
+                android:textColor="#313131"
+
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_marginHorizontal="8dp"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:elevation="5dp"
+        android:layout_height="5dp"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,23 +89,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/description"
-                android:text="description"
-                />
+
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:id="@+id/itemsRequired"
-               android:text="Items"
+               android:paddingVertical="16dp"
+               android:paddingStart="10dp"
+               android:textStyle="bold"
+               android:textColor="#212121"
+               android:fontFamily="@font/montserrat_medium"
+               android:text="Items Required"
                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#f5f5f5"
+                android:id="@+id/itemsRequired"
+                android:padding="10dp"
+                android:textColor="#313131"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Items Required"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:textColor="#212121"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Steps"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f5f5f5"
+                android:textColor="#313131"
                 android:id="@+id/steps"
-                android:text="steps"
+                android:padding="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Items Required"
                 />
 
         </LinearLayout>

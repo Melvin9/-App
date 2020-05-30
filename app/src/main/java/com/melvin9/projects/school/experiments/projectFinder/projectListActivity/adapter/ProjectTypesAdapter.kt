@@ -1,6 +1,7 @@
 package com.melvin9.projects.school.experiments.projectFinder.projectListActivity.adapter
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import com.melvin9.projects.school.experiments.projectFinder.projectListActivity.data.ProjectTypes
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,7 @@ class ProjectTypesAdapter(private val list: List<ProjectTypes>) :
     override fun onBindViewHolder(holder: ProjectViewHolder, position: Int) {
         holder.textView?.text =list[position].projectType
         if(list[position].projectType.equals(ProjectListActivity.type,true)){
-            holder.linearLayout?.setBackgroundColor(Color.parseColor("#ffffff"))
+            holder.linearLayout?.setBackgroundResource(R.drawable.project_selected_background)
         }
 
     }

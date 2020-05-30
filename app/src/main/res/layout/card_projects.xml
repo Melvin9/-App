@@ -5,11 +5,12 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp"
+    app:cardElevation="0dp"
     android:padding="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorTheme"
+        android:background="@drawable/search_background_list"
         android:id="@+id/cardView"
         android:orientation="vertical">
         <TextView
