@@ -8,6 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
+
         applicationId "com.melvin9.projects.school.experiments.projectfinder"
         minSdkVersion 17
         targetSdkVersion 29

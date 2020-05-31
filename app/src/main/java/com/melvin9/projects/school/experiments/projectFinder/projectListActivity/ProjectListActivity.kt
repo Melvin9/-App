@@ -11,6 +11,7 @@ import com.melvin9.projects.school.experiments.projectFinder.R
 import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
 import com.melvin9.projects.school.experiments.projectFinder.projectListActivity.adapter.ProjectListsAdapter
 import com.melvin9.projects.school.experiments.projectFinder.projectListActivity.data.ProjectTypes
+import com.melvin9.projects.school.experiments.projectFinder.utils.toast
 import kotlinx.android.synthetic.main.activity_project_list.*
 
 
@@ -24,7 +25,8 @@ class ProjectListActivity : AppCompatActivity(),ProjectListInterface {
         setContentView(R.layout.activity_project_list)
         setActionBar()
         type=intent.getStringExtra("clickedProject")!!
-        projectListPresenter.onCreate(this,this,intent)
+        projectListPresenter.onCreate(this,this)
+
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.action_bar, menu)

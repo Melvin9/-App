@@ -4,12 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Favourite
 import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
 
 
 @Database(
-    entities = [Project::class],
-    version = 2
+    entities = [Project::class,Favourite::class],
+    version = 3
 )
 abstract class ProjectDatabase : RoomDatabase() {
     abstract fun projectDao(): DAO

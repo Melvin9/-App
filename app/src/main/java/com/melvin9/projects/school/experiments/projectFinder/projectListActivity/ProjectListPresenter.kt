@@ -1,9 +1,6 @@
 package com.melvin9.projects.school.experiments.projectFinder.projectListActivity
 
-import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
@@ -15,7 +12,7 @@ import kotlin.collections.ArrayList
 class ProjectListPresenter {
     var list:MutableList<Project> = ArrayList()
 
-        fun onCreate(context: Context, projectListInterface: ProjectListInterface,intent: Intent) {
+    fun onCreate(context: Context, projectListInterface: ProjectListInterface) {
         addProjectTypes(context, projectListInterface)
         addProjectLists(context, projectListInterface) }
 
@@ -32,6 +29,7 @@ class ProjectListPresenter {
     private fun addProjectLists(context: Context, projectListInterface: ProjectListInterface) {
         MainActivity.data.observe(context as LifecycleOwner, Observer {project->
             for(item in project){
+                if(item.projectType.toString().trim().equals(ProjectListActivity.type,true))
                 list.add(item)
             }
             projectListInterface.renderProjectLists(context, list)
@@ -42,6 +40,7 @@ class ProjectListPresenter {
         if(searchQuery.isNotEmpty()) {
             for (item in list)
                 if (item.projectTitle.toString().toLowerCase(Locale.ROOT)
+                        .contains(searchQuery.toLowerCase(Locale.ROOT)) || item.projectDescription.toString().toLowerCase(Locale.ROOT)
                         .contains(searchQuery.toLowerCase(Locale.ROOT))) {
                     newList.add(item)
                 }
@@ -52,5 +51,6 @@ class ProjectListPresenter {
         }
 
     }
+
 
 }

@@ -10,8 +10,9 @@ import com.melvin9.projects.school.experiments.projectFinder.data.network.ApiHan
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import java.net.UnknownHostException
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivityPresenter {
     var projectData = MutableLiveData<List<Project>>()
@@ -41,11 +42,9 @@ class MainActivityPresenter {
             }
         }
     }
-
     private fun storeDataToDB(context: Context, data: List<Project>) {
         ProjectDatabase(context).projectDao().deleteAll()
-        ProjectDatabase(context).projectDao().insert(data)
+        ProjectDatabase(context).projectDao().projectInsert(data)
     }
-
 }
 
