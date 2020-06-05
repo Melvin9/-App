@@ -38,6 +38,9 @@ class FavouriteFragment : Fragment(),FavouriteInterface{
                 return true
             }
         })
+        sort.setOnClickListener {
+            favouritePresenter.sort(view.context,this)
+        }
     }
     override fun render(context: Context, data: List<Project>) {
         listRecyclerView?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

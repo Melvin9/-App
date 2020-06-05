@@ -22,6 +22,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         chemistry.setOnClickListener(this)
         biology.setOnClickListener(this)
         computer.setOnClickListener(this)
+        all.setOnClickListener (this)
+        allCard.setOnClickListener(this)
 
     }
     private fun projectsClicked(project: String) {
@@ -35,6 +37,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.chemistry -> projectsClicked("chemistry")
             R.id.physics -> projectsClicked("physics")
             R.id.computer -> projectsClicked("computer")
+            R.id.all -> projectsClicked("all")
+            R.id.allCard -> projectsClicked("all")
         }
     }
 }

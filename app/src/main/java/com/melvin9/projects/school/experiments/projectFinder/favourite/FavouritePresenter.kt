@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.melvin9.projects.school.experiments.projectFinder.data.db.ProjectDatabase
 import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
 import com.melvin9.projects.school.experiments.projectFinder.mainActivity.MainActivity
+import com.melvin9.projects.school.experiments.projectFinder.projectListActivity.ProjectListInterface
 import com.melvin9.projects.school.experiments.projectFinder.utils.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -48,5 +49,12 @@ class FavouritePresenter {
             }
         }
         favList.clear()
+    }
+    fun sort(context: Context,favouriteInterface: FavouriteInterface){
+        favList.sortBy {
+            it.projectTitle
+        }
+        context.toast("Sorted")
+        favouriteInterface.render(context, favList)
     }
 }

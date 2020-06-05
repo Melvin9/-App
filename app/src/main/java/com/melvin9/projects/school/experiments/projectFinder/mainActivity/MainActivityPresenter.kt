@@ -11,8 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
-import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivityPresenter {
     var projectData = MutableLiveData<List<Project>>()
@@ -27,7 +25,7 @@ class MainActivityPresenter {
         ProjectDatabase(context).projectDao().getProjectData().observe(context as LifecycleOwner,
             Observer {
                 projectData.value = it
-                MainActivity.data=projectData
+                MainActivity.data = projectData
             })
     }
 
@@ -36,12 +34,13 @@ class MainActivityPresenter {
             try {
                 val response = ApiHandler().getProjectsAsync().await()
                 callback(response.project)
-            }catch (e: UnknownHostException){
+            } catch (e: UnknownHostException) {
                 // Call Failed
                 e.printStackTrace()
             }
         }
     }
+
     private fun storeDataToDB(context: Context, data: List<Project>) {
         ProjectDatabase(context).projectDao().deleteAll()
         ProjectDatabase(context).projectDao().projectInsert(data)

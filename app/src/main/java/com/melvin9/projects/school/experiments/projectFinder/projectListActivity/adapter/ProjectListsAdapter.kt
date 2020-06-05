@@ -11,9 +11,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.melvin9.projects.school.experiments.projectFinder.projectContent.ProjectContent
 import com.melvin9.projects.school.experiments.projectFinder.R
 import com.melvin9.projects.school.experiments.projectFinder.data.db.entity.Project
+import com.melvin9.projects.school.experiments.projectFinder.projectContent.ProjectContent
 
 class ProjectListsAdapter(private val projectLists: List<Project>) :
     RecyclerView.Adapter<ProjectListsAdapter.ViewHolder>() {
@@ -47,19 +47,22 @@ class ProjectListsAdapter(private val projectLists: List<Project>) :
             .fallback(R.drawable.ic_physics)
             .into(holder.imageView)
 
-        holder.itemView.setOnClickListener{
-            val intent=Intent(holder.context,
-                ProjectContent::class.java).apply {
+        holder.itemView.setOnClickListener {
+            val intent = Intent(
+                holder.context,
+                ProjectContent::class.java
+            ).apply {
                 putExtra("videoURL", projectLists[position].videoLink?.trim())
-                putExtra("description",projectLists[position].projectDescription?.trim())
-                putExtra("title",projectLists[position].projectTitle?.trim())
-                putExtra("steps",projectLists[position].steps?.trim())
-                putExtra("items",projectLists[position].itemsRequired?.trim())
-                putExtra("id",projectLists[position].id.trim())
+                putExtra("description", projectLists[position].projectDescription?.trim())
+                putExtra("title", projectLists[position].projectTitle?.trim())
+                putExtra("steps", projectLists[position].steps?.trim())
+                putExtra("items", projectLists[position].itemsRequired?.trim())
+                putExtra("id", projectLists[position].id.trim())
+                putExtra("image",projectLists[position].imageLink?.trim())
 
 
             }
-            startActivity(holder.context,intent, Bundle.EMPTY)
+            startActivity(holder.context, intent, Bundle.EMPTY)
         }
     }
 }

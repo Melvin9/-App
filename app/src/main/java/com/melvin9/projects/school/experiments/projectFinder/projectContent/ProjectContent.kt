@@ -3,6 +3,7 @@ package com.melvin9.projects.school.experiments.projectFinder.projectContent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.melvin9.projects.school.experiments.projectFinder.R
 import com.melvin9.projects.school.experiments.projectFinder.utils.toast
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -29,10 +30,31 @@ class ProjectContent : AppCompatActivity(), ProjectContentView {
         favourite.setOnClickListener {
            presenter.choose(this, id, this)
         }
-
+        setActionBar()
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+    private fun setActionBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
     }
 
     private fun render() {
+        if(intent.getStringExtra("videoURL").isNullOrEmpty()){
+            projectImage.alpha=1F
+            Glide.with(this)
+                .load(intent.getStringExtra("image")!!)
+                .centerCrop()
+                .placeholder(R.drawable.ic_physics)
+                .error(R.drawable.ic_physics)
+                .fallback(R.drawable.ic_physics)
+                .into(projectImage)
+            youtube_player_view.alpha=0F
+        }
+
         heart.isVisible = false
         projectTitle.text = intent.getStringExtra("title")!!
         description.text = intent.getStringExtra("description")!!

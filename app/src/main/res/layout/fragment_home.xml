@@ -25,7 +25,7 @@
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/montserrat_bold"
             android:layout_marginTop="20dp"
-            android:text="@string/good_morning"
+            android:text="Project Finder"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             android:layout_marginStart="20dp" />
@@ -36,17 +36,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:textColor="@android:color/white"
-            android:text="@string/john"
+            android:text="Search"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="25sp"
             android:layout_marginStart="20dp" />
 
-        <SearchView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:padding="15dp"
+            android:id="@+id/all"
             android:background="@drawable/search_background"
-            android:queryHint="Search 1000+ Projects" />
+            android:hint="Search 1000+ Projects" />
         <ScrollView
             android:layout_width="match_parent"
             android:isScrollContainer="false"
@@ -197,6 +199,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:id="@+id/allCard"
                     android:layout_gravity="center"
                     app:cardCornerRadius="12dp"
                     >
